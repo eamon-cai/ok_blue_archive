@@ -32,18 +32,23 @@ android_activity = "com.yostarjp.bluearchive.MxUnityPlayerActivity"
 
 device = adb.device()
 device.shell(f"am start {android_package}/{android_activity}")
-capture = ADBCaptureMethod(device)
-hwnd_window = HwndWindow(title="Mumu Player 12", exit_event=exit_event, frame_width=capture.width,
-                         frame_height=capture.height)
+
+adb_capture = ADBCaptureMethod(device)
+hwnd_window = HwndWindow(title="Mumu Player 12", frame_width=adb_capture.width, frame_height=adb_capture.height,
+                         exit_event=exit_event)
+
+# windows_capture = WindowsGraphicsCaptureMethod(hwnd_window)
+# capture = windows_capture
+capture = adb_capture
 
 # Setup UI overlay for detection box display, optional
 overlay = TkOverlay(hwnd_window, exit_event)
-interaction = ADBBaseInteraction(device, capture, overlay)
+interaction = ADBBaseInteraction(device, capture, adb_capture.width, adb_capture.height, overlay)
 
 coco_folder = 'assets/coco_feature'
-feature_set = FeatureSet(coco_folder, capture.width, capture.height, overlay=overlay, default_threshold=0.95)
+feature_set = FeatureSet(coco_folder, adb_capture.width, adb_capture.height, overlay=overlay,
+                         default_horizontal_variance=0.1, default_vertical_variance=0.1, default_threshold=0.8)
 
-# task_executor = TaskExecutor(capture,target_fps=0.1)
 task_executor = TaskExecutor(capture, overlay=overlay, interaction=interaction, exit_event=exit_event, tasks=[
     AutoLoginTask(feature_set),
     CloseNotificationTask(feature_set),

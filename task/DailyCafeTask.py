@@ -1,7 +1,6 @@
-from typing_extensions import override
-
 from scene.MainScene import MainScene
 from task.BaseBaTaskask import BaseBaTask
+from typing_extensions import override
 
 
 class DailyCafeTask(BaseBaTask):
@@ -26,7 +25,8 @@ class DailyCafeTask(BaseBaTask):
 
             self.try_invite()
 
-            while self.wait_and_click("cafe_girl_click", 1, 1, 0.5, 1.3, time_out=6):
+            while self.wait_and_click("cafe_girl_click", 1, 1, 0.5, 1.3, time_out=6,
+                                      post_action=lambda: (self.sleep(1), self.click_relative(0.5, 0.5))):
                 pass
 
             self.go_home()
