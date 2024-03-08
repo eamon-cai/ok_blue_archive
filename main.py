@@ -5,8 +5,8 @@ import adbutils
 from autoui.capture.HwndWindow import HwndWindow
 from autoui.capture.adb.ADBCaptureMethod import ADBCaptureMethod
 from autoui.feature.FeatureSet import FeatureSet
+from autoui.gui.App import App
 from autoui.interaction.ADBInteraction import ADBBaseInteraction
-from autoui.overlay.TkOverlay import TkOverlay
 from autoui.task.TaskExecutor import TaskExecutor
 from scene.MainScene import MainScene
 from scene.NotificationScence import NotificationScene
@@ -42,14 +42,14 @@ hwnd_window = HwndWindow(title="Mumu Player 12", frame_width=adb_capture.width, 
 capture = adb_capture
 
 # Setup UI overlay for detection box display, optional
-overlay = TkOverlay(hwnd_window, exit_event)
-interaction = ADBBaseInteraction(device, capture, adb_capture.width, adb_capture.height, overlay)
+# overlay = TkOverlay(hwnd_window, exit_event)
+interaction = ADBBaseInteraction(device, capture, adb_capture.width, adb_capture.height)
 
 coco_folder = 'assets/coco_feature'
-feature_set = FeatureSet(coco_folder, adb_capture.width, adb_capture.height, overlay=overlay,
+feature_set = FeatureSet(coco_folder, adb_capture.width, adb_capture.height,
                          default_horizontal_variance=0.1, default_vertical_variance=0.1, default_threshold=0.8)
 
-task_executor = TaskExecutor(capture, overlay=overlay, interaction=interaction, exit_event=exit_event, tasks=[
+task_executor = TaskExecutor(capture, interaction=interaction, exit_event=exit_event, tasks=[
     AutoLoginTask(feature_set),
     CloseNotificationTask(feature_set),
     DailyCafeTask(feature_set),
@@ -63,4 +63,5 @@ task_executor = TaskExecutor(capture, overlay=overlay, interaction=interaction, 
     MainScene(feature_set),
 ])
 
-overlay.start()
+app = App(exit_event)
+app.start()
