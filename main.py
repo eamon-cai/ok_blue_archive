@@ -41,8 +41,6 @@ hwnd_window = HwndWindow(title="Mumu Player 12", frame_width=adb_capture.width, 
 # capture = windows_capture
 capture = adb_capture
 
-# Setup UI overlay for detection box display, optional
-# overlay = TkOverlay(hwnd_window, exit_event)
 interaction = ADBBaseInteraction(device, capture, adb_capture.width, adb_capture.height)
 
 coco_folder = 'assets/coco_feature'
@@ -52,8 +50,8 @@ feature_set = FeatureSet(coco_folder, adb_capture.width, adb_capture.height,
 task_executor = TaskExecutor(capture, interaction=interaction, exit_event=exit_event, tasks=[
     AutoLoginTask(feature_set),
     CloseNotificationTask(feature_set),
-    DailyCafeTask(feature_set),
     DailyScheduleTask(feature_set),
+    DailyCafeTask(feature_set),
     ClickOkTask(feature_set),
 ], scenes=[
     OkDialogScene(feature_set),
