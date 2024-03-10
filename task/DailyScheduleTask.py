@@ -1,7 +1,6 @@
-from typing_extensions import override
-
 from scene.MainScene import MainScene
 from task.BaseBaTaskask import BaseBaTask
+from typing_extensions import override
 
 
 class DailyScheduleTask(BaseBaTask):
