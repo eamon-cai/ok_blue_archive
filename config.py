@@ -12,9 +12,11 @@ from task.DailyScheduleTask import DailyScheduleTask
 config = {
     'debug': True,  # Optional, default: False
     'use_gui': True,
+    'gui_icon': 'icon.png',  # Optional
+    'gui_title': 'Blue Archive Helper',  # Optional, default: False
     'capture': 'adb',  # adb/windows, see #autoui.capture
+    'capture_window_title': 'Mumu Player 12"',  # required  when using windows capture
     'interaction': 'adb',  # adb/windows, see #autoui.interaction
-    'window_title': 'Mumu Player 12"',  # required  when using windows capture
     'adb_host': '127.0.0.1',  # required  when using adb capture if not connected, debug host
     'adb_port': 16384,  # required  when using adb capture if not connected, debug port
     'coco_feature_folder': 'assets/coco_feature',  # required if using feature detection
