@@ -31,7 +31,7 @@ class DailyCafeTask(BaseBaTask):
 
             self.go_home()
 
-            self.done = True
+            self.set_done()
 
     def try_invite(self):
         self.wait_and_click("cafe_invite_ticket", time_out=3) and self.wait_and_click(
