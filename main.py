@@ -1,4 +1,4 @@
-from autoui.AutoUI import AutoUI
-from blue_archive_showcase.config import config
+from autohelper.AutoHelper import AutoHelper
+from config import config
 
-autoui = AutoUI(config)
+autoui = AutoHelper(config)

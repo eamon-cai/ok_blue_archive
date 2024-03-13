@@ -1,7 +1,7 @@
 from scene.OkDialogScene import OkDialogScene
 from typing_extensions import override
 
-from autoui.task.FindFeatureTask import FindFeatureTask
+from autohelper.task.FindFeatureTask import FindFeatureTask
 
 
 class ClickOkTask(FindFeatureTask):

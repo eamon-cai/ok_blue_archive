@@ -1,7 +1,7 @@
 from scene.MainScene import MainScene
 
-from autoui.logging.Logger import get_logger
-from autoui.task.FindFeatureTask import FindFeatureTask
+from autohelper.logging.Logger import get_logger
+from autohelper.task.FindFeatureTask import FindFeatureTask
 
 logger = get_logger(__name__)
 
