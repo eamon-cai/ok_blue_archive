@@ -16,7 +16,7 @@ config = {
     'gui_icon': 'icon.png',  # Optional
     'gui_title': 'Blue Archive Helper',  # Optional, default: False
     'capture': 'adb',  # adb/windows, see #autohelper.capture
-    'capture_window_title': 'Mumu Player 12"',  # required  when using windows capture
+    'capture_window_title': 'Mumu Player 12',  # required  when using windows capture
     'interaction': 'adb',  # adb/windows, see #autohelper.interaction
     'adb_host': '127.0.0.1',  # required  when using adb capture if not connected, debug host
     'adb_port': 16385,  # required  when using adb capture if not connected, debug port
