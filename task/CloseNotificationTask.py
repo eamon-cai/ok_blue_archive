@@ -1,7 +1,7 @@
 from scene.NotificationScence import NotificationScene
 from typing_extensions import override
 
-from autohelper.task.FindFeatureTask import FindFeatureTask
+from ok.task.FindFeatureTask import FindFeatureTask
 
 
 class CloseNotificationTask(FindFeatureTask):

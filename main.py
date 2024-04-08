@@ -1,4 +1,4 @@
-from autohelper.AutoHelper import AutoHelper
 from config import config
+from ok.OK import OK
 
-autoui = AutoHelper(config)
+autoui = OK(config)

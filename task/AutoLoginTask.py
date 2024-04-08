@@ -1,7 +1,7 @@
 from scene.StartScence import StartScene
 from typing_extensions import override
 
-from autohelper.task.FindFeatureTask import FindFeatureTask
+from ok.task.FindFeatureTask import FindFeatureTask
 
 
 class AutoLoginTask(FindFeatureTask):
